@@ -23,7 +23,7 @@ document.querySelectorAll("[data-servicio]").forEach((link) => {
 //    que te llega por correo.
 // 2) Pegala acá abajo reemplazando el texto de ejemplo.
 // ---------------------------------------------------------------
-const ACCESS_KEY = "fa_a110f3d8ba500d0423df35c2195c230f0d5403f7676769989d5a94b5b714f930";
+const ACCESS_KEY = "fa_a110f3d8b";
 
 const form = document.getElementById("contactForm");
 const msg = document.getElementById("formMsg");
