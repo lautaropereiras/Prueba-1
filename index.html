@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudio Creativo | Fotografía, Campañas y Tiendas Online</title>
+  <meta name="description" content="Fotografía profesional, campañas publicitarias y páginas web para e-commerce. Hacemos que tu marca se vea y venda mejor." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="#inicio" class="logo">Estudio<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+      <nav id="menu">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contacto" class="btn btn-small">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <p class="eyebrow">Fotografía · Campañas · E-commerce</p>
+        <h1>Hacemos que tu marca <em>se vea</em> y <em>venda</em> mejor.</h1>
+        <p class="lead">Fotos que enamoran, campañas que traen clientes y tiendas online listas para vender las 24 horas.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn">Pedir presupuesto</a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <h2>Nuestros servicios</h2>
+        <p class="section-sub">Tres áreas que se complementan para llevar tu negocio al siguiente nivel.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">📷</div>
+            <h3>Fotografía</h3>
+            <ul>
+              <li>Fotografía de producto</li>
+              <li>Retratos y contenido para marcas</li>
+              <li>Edición y retoque profesional</li>
+              <li>Fotos optimizadas para redes y web</li>
+            </ul>
+            <a href="#contacto" class="link" data-servicio="Fotografía">Consultar →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">📣</div>
+            <h3>Campañas</h3>
+            <ul>
+              <li>Estrategia y planificación</li>
+              <li>Anuncios en Meta y Google</li>
+              <li>Creatividades y copywriting</li>
+              <li>Medición y reportes de resultados</li>
+            </ul>
+            <a href="#contacto" class="link" data-servicio="Campañas">Consultar →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">🛒</div>
+            <h3>Páginas web para E-commerce</h3>
+            <ul>
+              <li>Diseño de tienda online a medida</li>
+              <li>Catálogo, carrito y medios de pago</li>
+              <li>Adaptada a celulares y rápida</li>
+              <li>SEO básico y puesta en línea</li>
+            </ul>
+            <a href="#contacto" class="link" data-servicio="Página web para E-commerce">Consultar →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section alt" id="proceso">
+      <div class="container">
+        <h2>Cómo trabajamos</h2>
+        <div class="steps">
+          <div class="step"><span>1</span><h3>Conversamos</h3><p>Entendemos tu marca, tus objetivos y tu público.</p></div>
+          <div class="step"><span>2</span><h3>Planificamos</h3><p>Definimos el alcance, los tiempos y el presupuesto.</p></div>
+          <div class="step"><span>3</span><h3>Producimos</h3><p>Fotografiamos, diseñamos y lanzamos con tu aprobación.</p></div>
+          <div class="step"><span>4</span><h3>Medimos</h3><p>Analizamos resultados y mejoramos de forma continua.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <h2>Portfolio</h2>
+        <p class="section-sub">Reemplazá estos recuadros por tus propias imágenes (ver README).</p>
+        <div class="gallery">
+          <div class="shot g1">Fotografía de producto</div>
+          <div class="shot g2">Campaña en redes</div>
+          <div class="shot g3">Tienda online</div>
+          <div class="shot g4">Retrato de marca</div>
+          <div class="shot g5">Anuncios</div>
+          <div class="shot g6">E-commerce</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section alt" id="contacto">
+      <div class="container contact">
+        <div>
+          <h2>Hablemos de tu proyecto</h2>
+          <p>Contanos qué necesitás y te respondemos con una propuesta.</p>
+          <p class="contact-data">
+            ✉️ tuemail@ejemplo.com<br />
+            📱 +54 9 11 0000-0000
+          </p>
+        </div>
+        <form id="contactForm" novalidate>
+          <label>Nombre
+            <input type="text" id="nombre" required placeholder="Tu nombre" />
+          </label>
+          <label>Email
+            <input type="email" id="email" required placeholder="tu@email.com" />
+          </label>
+          <label>Servicio de interés
+            <select id="servicio">
+              <option>Fotografía</option>
+              <option>Campañas</option>
+              <option>Página web para E-commerce</option>
+              <option>Pack completo</option>
+            </select>
+          </label>
+          <label>Mensaje
+            <textarea id="mensaje" rows="4" required placeholder="Contanos sobre tu proyecto"></textarea>
+          </label>
+          <button type="submit" class="btn">Enviar consulta</button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Estudio. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
