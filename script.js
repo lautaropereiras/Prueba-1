@@ -17,15 +17,19 @@ document.querySelectorAll("[data-servicio]").forEach((link) => {
   });
 });
 
-// Formulario de contacto
-// Por ahora abre el correo del usuario con el mensaje armado (funciona sin servidor).
-// Más adelante podés reemplazarlo por Formspree, EmailJS o una API propia.
-const EMAIL_DESTINO = "lautaropereiras1705@gmail.com"; // <-- cambiá esto por tu email real
+// ---------------------------------------------------------------
+// Formulario de contacto con Web3Forms
+// 1) Entrá a https://web3forms.com, poné tu email y copiá la "Access Key"
+//    que te llega por correo.
+// 2) Pegala acá abajo reemplazando el texto de ejemplo.
+// ---------------------------------------------------------------
+const ACCESS_KEY = "fa_a110f3d8ba500d0423df35c2195c230f0d5403f7676769989d5a94b5b714f930";
 
 const form = document.getElementById("contactForm");
 const msg = document.getElementById("formMsg");
+const submitBtn = form.querySelector("button[type='submit']");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const nombre = document.getElementById("nombre").value.trim();
@@ -41,14 +45,40 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const asunto = encodeURIComponent(`Consulta: ${servicio}`);
-  const cuerpo = encodeURIComponent(
-    `Nombre: ${nombre}\nEmail: ${email}\nServicio: ${servicio}\n\n${mensaje}`
-  );
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Enviando...";
+  msg.textContent = "";
+  msg.className = "form-msg";
 
-  window.location.href = `mailto:${EMAIL_DESTINO}?subject=${asunto}&body=${cuerpo}`;
+  try {
+    const respuesta = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: `Nueva consulta: ${servicio}`,
+        from_name: "Web - Estudio",
+        name: nombre,
+        email: email, // se usa como "responder a" para contestarle directo al cliente
+        servicio: servicio,
+        message: mensaje,
+      }),
+    });
 
-  msg.textContent = "¡Gracias! Se abrió tu correo para enviar la consulta.";
-  msg.className = "form-msg ok";
-  form.reset();
+    const datos = await respuesta.json();
+
+    if (respuesta.ok && datos.success) {
+      msg.textContent = "¡Gracias! Recibimos tu consulta y te respondemos pronto.";
+      msg.className = "form-msg ok";
+      form.reset();
+    } else {
+      throw new Error(datos.message || "Error al enviar");
+    }
+  } catch (error) {
+    msg.textContent = "No pudimos enviar tu consulta. Probá de nuevo en unos minutos.";
+    msg.className = "form-msg error";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Enviar consulta";
+  }
 });
