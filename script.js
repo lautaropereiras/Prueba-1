@@ -20,7 +20,7 @@ document.querySelectorAll("[data-servicio]").forEach((link) => {
 // Formulario de contacto
 // Por ahora abre el correo del usuario con el mensaje armado (funciona sin servidor).
 // Más adelante podés reemplazarlo por Formspree, EmailJS o una API propia.
-const EMAIL_DESTINO = "tuemail@ejemplo.com"; // <-- cambiá esto por tu email real
+const EMAIL_DESTINO = "lautaropereiras1705@gmail.com"; // <-- cambiá esto por tu email real
 
 const form = document.getElementById("contactForm");
 const msg = document.getElementById("formMsg");
